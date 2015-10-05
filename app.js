@@ -7,6 +7,7 @@ var bodyParser     = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var passport       = require('passport');
 var cookieParser   = require('cookie-parser');
+var geocoder       = require('geocoder');
 var session        = require('express-session');
 var port           = process.env.PORT || 9000;
 
