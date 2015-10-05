@@ -66,6 +66,11 @@ function initAutocomplete() {
       }
     });
     map.fitBounds(bounds);
+		var listener = google.maps.event.addListener(map, "idle", function() { 
+  		if (map.getZoom() > 14) map.setZoom(14); 
+  		else if (map.getZoom() < 12) map.setZoom(12);
+  		google.maps.event.removeListener(listener); 
+});
   });
  }
 	 	var styledArray =  [
@@ -268,8 +273,6 @@ function initAutocomplete() {
         ]
     }
 ];
-
-
 
 
 // View = {
