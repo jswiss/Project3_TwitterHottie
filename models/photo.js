@@ -4,14 +4,15 @@ var Tag = mongoose.model('Tag');
 
 var photoSchema = new mongoose.Schema ({
 	url: String,
+	user: { type: mongoose.Schema.ObjectId, ref: 'User' },
 	lat: Number,
 	lon: Number,
-	userId: String,
+	twitterUser: String,
 	screenName: String,
-	tag: [Tag]
+	tags: [Tag.schema]
 })
 
-var Photo = mongoose.model('Photo');
+var Photo = mongoose.model('Photo', photoSchema);
 
 module.exports = Photo;
 
