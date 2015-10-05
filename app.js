@@ -1,15 +1,17 @@
-var express = require('express');
-var app     = express();
-var server  = require('http').createServer(app);
-var morgan  = require('morgan');
-var port    = process.env.PORT || 3000;
-var mongoose = require('mongoose');
+var express    = require('express');
+var app        = express();
+var server     = require('http').createServer(app);
+var mongoose   = require('mongoose');
+var morgan     = require('morgan');
+var bodyParser = require('body-parser');
+var port       = process.env.PORT || 3000;
+
 
 mongoose.connect('mongodb://localhost/twitterhottie')
 
-var Tag = require('./models/tag');
-var Photo = require('./models/photo');
-var User = require('./models/user');
+var Tag      = require('./models/tag');
+var Photo    = require('./models/photo');
+var User     = require('./models/user');
 
 app.set('view engine', 'ejs') //uses ejs as view engine
 app.set('views', './views') //tells express to look for ejs files in views folder
