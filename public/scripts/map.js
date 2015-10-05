@@ -49,6 +49,13 @@ function initAutocomplete() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+      debugger;
+ 			
+ 			var location = place.geometry.location;
+			var lat = location.H;
+			var lon = location.L;
+			console.log(lat);
+			console.log(lon);
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
@@ -70,7 +77,7 @@ function initAutocomplete() {
   		if (map.getZoom() > 14) map.setZoom(14); 
   		else if (map.getZoom() < 12) map.setZoom(12);
   		google.maps.event.removeListener(listener); 
-});
+		});
   });
  }
 	 	var styledArray =  [
@@ -273,7 +280,6 @@ function initAutocomplete() {
         ]
     }
 ];
-
 
 // View = {
 // 	search: function() {
