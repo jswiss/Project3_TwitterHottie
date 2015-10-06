@@ -1,11 +1,12 @@
-var View = View || {};
-
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
 
+
+
 function initAutocomplete() {
-  var map = new google.maps.Map(document.getElementById('googlemap'), {
+
+	var map = new google.maps.Map(document.getElementById('googlemap'), {
     center: {lat: 51.5286416, lng: -0.1015987},
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -28,6 +29,7 @@ function initAutocomplete() {
   // more details for that place.
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
+  	console.log(places)
 
     if (places.length == 0) {
       return;
@@ -49,13 +51,15 @@ function initAutocomplete() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
-      debugger;
  			
  			var location = place.geometry.location;
-			var lat = location.H;
-			var lon = location.L;
-			console.log(lat);
-			console.log(lon);
+
+			var lat = location.lat();
+			var lng = location.lng();
+      
+      sendToTwitter(lat, lng);
+			
+	
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
@@ -72,6 +76,7 @@ function initAutocomplete() {
         bounds.extend(place.geometry.location);
       }
     });
+
     map.fitBounds(bounds);
 		var listener = google.maps.event.addListener(map, "idle", function() { 
   		if (map.getZoom() > 14) map.setZoom(14); 
@@ -79,224 +84,214 @@ function initAutocomplete() {
   		google.maps.event.removeListener(listener); 
 		});
   });
- }
-	 	var styledArray =  [
-    {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
-            {
-                "hue": "#000000"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": -100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
-            {
-                "hue": "#000000"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": -100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "all",
-        "stylers": [
-            {
-                "hue": "#000000"
-            },
-            {
-                "saturation": 0
-            },
-            {
-                "lightness": -100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "hue": "#ffffff"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "hue": "#000000"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": -100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "all",
-        "stylers": [
-            {
-                "hue": "#ffffff"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 100
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#ffffff"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 100
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "hue": "#000000"
-            },
-            {
-                "saturation": 0
-            },
-            {
-                "lightness": -100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "hue": "#000000"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": -100
-            },
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#bbbbbb"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 26
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#dddddd"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": -3
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    }
+}
+
+var styledArray =  [
+	{
+	    "featureType": "poi",
+	    "elementType": "all",
+	    "stylers": [
+	        {
+	            "hue": "#000000"
+	        },
+	        {
+	            "saturation": -100
+	        },
+	        {
+	            "lightness": -100
+	        },
+	        {
+	            "visibility": "off"
+	        }
+	    ]
+	},
+	{
+    "featureType": "poi",
+    "elementType": "all",
+    "stylers": [
+	        {
+            "hue": "#000000"
+	        },
+	        {
+            "saturation": -100
+	        },
+	        {
+            "lightness": -100
+	        },
+	        {
+            "visibility": "off"
+	        }
+	    ]
+	},
+{
+    "featureType": "administrative",
+    "elementType": "all",
+    "stylers": [
+	        {
+            "hue": "#000000"
+	        },
+	        {
+            "saturation": 0
+	        },
+	        {
+            "lightness": -100
+	        },
+	        {
+            "visibility": "off"
+	        }
+	    ]
+	},
+	{
+	    "featureType": "road",
+	    "elementType": "labels",
+	    "stylers": [
+	        {
+	            "hue": "#ffffff"
+	        },
+	        {
+	            "saturation": -100
+	        },
+	        {
+	            "lightness": 100
+	        },
+	        {
+	            "visibility": "off"
+	        }
+	    ]
+	},
+	{
+	    "featureType": "water",
+	    "elementType": "labels",
+	    "stylers": [
+	        {
+	            "hue": "#000000"
+	        },
+	        {
+	            "saturation": -100
+	        },
+	        {
+	            "lightness": -100
+	        },
+	        {
+	            "visibility": "off"
+	        }
+	    ]
+	},
+	{
+	    "featureType": "road.local",
+	    "elementType": "all",
+	    "stylers": [
+	        {
+	            "hue": "#ffffff"
+	        },
+	        {
+	            "saturation": -100
+	        },
+	        {
+	            "lightness": 100
+	        },
+	        {
+	            "visibility": "on"
+	        }
+	    ]
+	},
+	{
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+        {
+            "hue": "#ffffff"
+        },
+        {
+            "saturation": -100
+        },
+        {
+            "lightness": 100
+        },
+        {
+            "visibility": "on"
+        }
+    ]
+},
+{
+    "featureType": "transit",
+    "elementType": "labels",
+    "stylers": [
+        {
+            "hue": "#000000"
+        },
+        {
+            "saturation": 0
+        },
+        {
+            "lightness": -100
+        },
+        {
+            "visibility": "off"
+        }
+    ]
+},
+{
+    "featureType": "landscape",
+    "elementType": "labels",
+    "stylers": [
+        {
+            "hue": "#000000"
+        },
+        {
+            "saturation": -100
+        },
+        {
+            "lightness": -100
+        },
+        {
+            "visibility": "off"
+        }
+    ]
+},
+{
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+        {
+            "hue": "#bbbbbb"
+        },
+        {
+            "saturation": -100
+        },
+        {
+            "lightness": 26
+        },
+        {
+            "visibility": "on"
+        }
+    ]
+},
+{
+    "featureType": "landscape",
+    "elementType": "geometry",
+    "stylers": [
+        {
+            "hue": "#dddddd"
+        },
+        {
+            "saturation": -100
+        },
+        {
+            "lightness": -3
+        },
+        {
+            "visibility": "on"
+        }
+    ]
+}
 ];
 
-// View = {
-// 	search: function() {
-// 		$('#map-search').on('submit', function(e) {
-// 			e.preventDefault();
-// 			e.stopPropagation();
-// 			var locationSearch = $('#map-search').val();
-// 			console.log(locationSearch)
-// 			$.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + locationSearch + 'UK', function(response) {
-// 			// render(response);
-// 			console.log(response)
-// 			})
-// 		})
-// 	}
+function sendToTwitter(latitude, longitude) {
+	console.log(latitude, longitude)
+}
 
-// function render(response) {
-// 		console.log(response);
-// 	}
-
-
+$("pac-input").on('submit', function(e) {
+	e.preventDefault();
+	$.get("")
+})
