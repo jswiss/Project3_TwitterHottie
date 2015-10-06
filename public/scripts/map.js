@@ -1,8 +1,7 @@
+
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
-
-
 
 function initAutocomplete() {
 
@@ -288,15 +287,23 @@ var styledArray =  [
 ];
 
 function sendToTwitter(latitude, longitude) {
-	var lat1 = latitude + .5;
-	var lon1 = longitude + .5;
-	var lat2 = latitude - .5;
-	var lon2 = longitude - .5;
+	lat1 = latitude + 2;
+	lon1 = longitude + 2;
+	lat2 = latitude - 2;
+	lon2 = longitude - 2;
 	console.log(lat1, lon1);
 	console.log(lat2, lon2);
+
+    var myLocation = [lon1, lat1, lon2, lat2]
+
+    var socket = io.connect('http://localhost:9000');
+
+    socket.on('connect', function() {
+        console.log('client has connected');
+    });
+
+    socket.emit('location', myLocation)
 }
-
-
 
 // $("pac-input").on('submit', function(e) {
 // 	e.preventDefault();
