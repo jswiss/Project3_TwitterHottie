@@ -12,6 +12,9 @@ router.route('/')
 router.route('/login')
 	.get(usersController.login);
 
+router.route('/login')
+	.post(usersController.login);
+
 router.route('/profile')
 	.get(usersController.profile);
 
