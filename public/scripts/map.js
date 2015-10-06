@@ -30,7 +30,6 @@ function initAutocomplete() {
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
   	console.log(places)
-
     if (places.length == 0) {
       return;
     }
@@ -59,7 +58,11 @@ function initAutocomplete() {
       
       sendToTwitter(lat, lng);
 			
-	
+		  marker = new google.maps.Marker({
+		    map: map,
+		    animation: google.maps.Animation.DROP,
+		    // position: {lat: 59.327, lng: 18.067}
+		  });
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
@@ -288,19 +291,12 @@ var styledArray =  [
 ];
 
 function sendToTwitter(latitude, longitude) {
-	var lat1 = latitude + .5;
-	var lon1 = longitude + .5;
-	var lat2 = latitude - .5;
-	var lon2 = longitude - .5;
-	console.log(lat1, lon1);
-	console.log(lat2, lon2);
-	return lat1;
-	return lon1;
-	return lat2;
-	return lon2;
+	console.log(latitude, longitude);
 }
 
-$("pac-input").on('submit', function(e) {
-	e.preventDefault();
-	$.get("")
-})
+sendToTwitter();
+
+// $("pac-input").on('submit', function(e) {
+// 	e.preventDefault();
+// 	$.get("")
+// })
