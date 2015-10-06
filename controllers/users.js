@@ -8,7 +8,7 @@ function login(req, res) {
 //GET /logout
 function logout(req, res) {
 	req.logout();
-	res.redirect('/login')
+	res.redirect('/')
 }
 
 //Restricted pages
