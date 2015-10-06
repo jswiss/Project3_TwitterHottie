@@ -14,7 +14,11 @@ var http           = require('http')
 var server         = require('http').createServer(app);
 var io             = require('socket.io')(server);
 var Twit           = require('twit');
-    
+var geocoderProvider = 'google';
+var httpAdapter    = 'http';
+var geocoder       = require('node-geocoder')(geocoderProvider, httpAdapter);
+
+
 mongoose.connect('mongodb://localhost/twitterhottie')
 
 var Tag            = require('./models/tag');
@@ -89,16 +93,30 @@ io.on('connect', function(socket) { //when someone connects, do something
     console.log(mapLocation)
     var stream = twitter.stream('statuses/filter', { locations: mapLocation });
     console.log(stream)
+
+    stream.on('tweet', function(tweet) {
+    var data = {};
+    data.name = tweet.user.name;
+    data.screen_name = tweet.user.screen_name;
+    data.text = tweet.text;
+    data.user_profile_image = tweet.user.profile_image_url;
+    // console.log(tweet)
+    console.log(tweet.place.name + ', ' + tweet.place.country)
+
+    socket.emit('tweets', tweet);
+
+    var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
+
+    geocoder.geocode(geocoderPlaceName, function(err, res) {
+      console.log(res);
+    });
+
+    });
   });
- // stream.on('tweet', function(tweet) {
-  //   var data = {};
-  //   data.name = tweet.user.name;
-  //   data.screen_name = tweet.user.screen_name;
-  //   data.text = tweet.text;
-  //   data.user_profile_image = tweet.user.profile_image_url;
-  //   socket.emit('tweets', data);
-  });
-// });
+});
+
+
+
 
 
 

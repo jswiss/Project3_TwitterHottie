@@ -287,18 +287,22 @@ var styledArray =  [
 ];
 
 function sendToTwitter(latitude, longitude) {
-	lat1 = latitude + 2;
-	lon1 = longitude + 2;
-	lat2 = latitude - 2;
-	lon2 = longitude - 2;
-	console.log(lat1, lon1);
-	console.log(lat2, lon2);
+	lat1 = (latitude + 2).toFixed(2);
+	lon1 = (longitude + 2).toFixed(2);
+	lat2 = (latitude - 2).toFixed(2);
+	lon2 = (longitude - 2).toFixed(2);
+	// console.log(lat1, lon1);
+	// console.log(lat2, lon2);
 
     var mapOutput = [lon1, lat1, lon2, lat2]
     
-    var mapLocation = mapOutput.map(String)
+    var mapLocationTEST = mapOutput.map(String)
     
+    // var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
+
+    var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
     console.log(mapLocation)
+    console.log(mapLocationTEST)
 
     var socket = io.connect('http://localhost:9000');
 
