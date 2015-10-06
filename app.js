@@ -76,30 +76,21 @@ server.listen(port, function() {
 
 //web socket stuff
 
-// var twitter = new Twit({
-//   consumer_key:        process.env.TWITTER_CONSUMER_KEY,
-//   consumer_secret:     process.env.TWITTER_CONSUMER_SECRET,
-//   access_token:        process.env.TWITTER_ACCESS_TOKEN,
-//   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-// })
-
-
-// var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
- 
-// var stream = twitter.stream('statuses/filter', { locations: sanFrancisco })
- 
-// stream.on('tweet', function (tweet) {
-//   console.log(tweet)
-// })
-
-// var stream = twitter.stream('statuses/filter', { track: ["syria russia putin"] });
+var twitter = new Twit({
+  consumer_key:        process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret:     process.env.TWITTER_CONSUMER_SECRET,
+  access_token:        process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+})
 
 io.on('connect', function(socket) { //when someone connects, do something
   console.log('someone has connected!');
-  socket.on('location', function(location) {
-    console.log(location)
+  socket.on('mapLocation', function(mapLocation) {
+    console.log(mapLocation)
+    var stream = twitter.stream('statuses/filter', { locations: mapLocation });
+    console.log(stream)
   });
-  // stream.on('tweet', function(tweet) {
+ // stream.on('tweet', function(tweet) {
   //   var data = {};
   //   data.name = tweet.user.name;
   //   data.screen_name = tweet.user.screen_name;

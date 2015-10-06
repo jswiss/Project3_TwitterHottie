@@ -294,7 +294,11 @@ function sendToTwitter(latitude, longitude) {
 	console.log(lat1, lon1);
 	console.log(lat2, lon2);
 
-    var myLocation = [lon1, lat1, lon2, lat2]
+    var mapOutput = [lon1, lat1, lon2, lat2]
+    
+    var mapLocation = mapOutput.map(String)
+    
+    console.log(mapLocation)
 
     var socket = io.connect('http://localhost:9000');
 
@@ -302,7 +306,7 @@ function sendToTwitter(latitude, longitude) {
         console.log('client has connected');
     });
 
-    socket.emit('location', myLocation)
+    socket.emit('mapLocation', mapLocation)
 }
 
 // $("pac-input").on('submit', function(e) {
