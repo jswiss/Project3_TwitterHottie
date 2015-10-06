@@ -9,4 +9,13 @@ var photosController = require('../controllers/photos');
 router.route('/')
 	.get(usersController.home);
 
-module.exports = router
+router.route('/login')
+	.get(usersController.login);
+
+router.route('/profile')
+	.get(usersController.profile);
+
+router.route('/logout')
+	.get(usersController.logout);
+
+module.exports = router;
