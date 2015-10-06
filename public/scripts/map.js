@@ -294,11 +294,13 @@ function sendToTwitter(latitude, longitude) {
 	var lon2 = longitude - .5;
 	console.log(lat1, lon1);
 	console.log(lat2, lon2);
+	return lat1;
+	return lon1;
+	return lat2;
+	return lon2;
 }
 
-
-
-// $("pac-input").on('submit', function(e) {
-// 	e.preventDefault();
-// 	$.get("")
-// })
+$("pac-input").on('submit', function(e) {
+	e.preventDefault();
+	$.get("")
+})

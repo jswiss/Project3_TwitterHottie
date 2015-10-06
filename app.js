@@ -1,6 +1,6 @@
 var express        = require('express');
 var app            = express();
-// var server         = require('http').createServer(app);
+var server         = require('http').createServer(app);
 var mongoose       = require('mongoose');
 var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
@@ -8,10 +8,9 @@ var expressLayouts = require('express-ejs-layouts');
 var passport       = require('passport');
 var cookieParser   = require('cookie-parser');
 var geocoder       = require('geocoder');
+var io             = require('socket.io')(server);
 var session        = require('express-session');
 var port           = process.env.PORT || 9000;
-
-
 
 mongoose.connect('mongodb://localhost/twitterhottie')
 
