@@ -1,6 +1,6 @@
 var express        = require('express');
 var app            = express();
-// var server         = require('http').createServer(app);
+var server         = require('http').createServer(app);
 var mongoose       = require('mongoose');
 var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
@@ -8,8 +8,11 @@ var expressLayouts = require('express-ejs-layouts');
 var passport       = require('passport');
 var cookieParser   = require('cookie-parser');
 var geocoder       = require('geocoder');
+var io             = require('socket.io')(server);
 var session        = require('express-session');
+var flash          = require('connect-flash');
 var port           = process.env.PORT || 9000;
+
 var http           = require('http')
 var server         = require('http').createServer(app);
 var io             = require('socket.io')(server);
@@ -18,16 +21,24 @@ var geocoderProvider = 'google';
 var httpAdapter    = 'http';
 var geocoder       = require('node-geocoder')(geocoderProvider, httpAdapter);
 
-
-mongoose.connect('mongodb://localhost/twitterhottie')
+mongoose.connect('mongodb://localhost/twitterhottie');
 
 var Tag            = require('./models/tag');
 var Photo          = require('./models/photo');
 var User           = require('./models/user');
-var routes         = require('./config/routes');
+var routes         = require('./config/routes')//(app, passport);
 
-app.set('view engine', 'ejs') //uses ejs as view engine
-app.set('views', './views') //tells express to look for ejs files in views folder
+app.set('view engine', 'ejs'); //uses ejs as view engine
+app.set('views', './views'); //tells express to look for ejs files in views folder
+
+require('./config/passport')(passport); // pass passport for configuration
+
+//passport shiz
+app.use(session({ secret: 'boomshakalaka' })); //session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 
 //logging middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,11 +47,6 @@ app.use(expressLayouts);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(routes);
-
-//passport stuffs
-// app.use(session({ secret: 'TWITTER-HOTTIE' })); 
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 
 //serve static assets (js, css, images) from the 'public' folder
@@ -77,6 +83,7 @@ app.get('/', function(req, res){
 server.listen(port, function() {
 	console.log('server started')
 });
+<<<<<<< HEAD
 
 //web socket stuff
 
@@ -133,3 +140,5 @@ io.on('connect', function(socket) { //when someone connects, do something
 
 
 
+=======
+>>>>>>> jointdev
