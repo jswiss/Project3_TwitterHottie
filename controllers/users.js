@@ -1,5 +1,5 @@
 //GET /login
-function login(req, res) {
+function login(app, passport, req, res) {
 	res.render('login.ejs', { message: req.flash('loginMessage') });
 };
 
@@ -46,6 +46,7 @@ function isLoggedIn(req, res, next) {
 module.exports = {
 	home:         home,
 	login:        login,
+	logout: 			logout,
 	profile:      profile,
 	isLoggedIn:   isLoggedIn,
 	twitAuth:     twitAuth,

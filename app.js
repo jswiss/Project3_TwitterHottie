@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost/twitterhottie');
 var Tag            = require('./models/tag');
 var Photo          = require('./models/photo');
 var User           = require('./models/user');
-var routes         = require('./config/routes')(app, passport);
+var routes         = require('./config/routes')  //(app, passport);
 
 app.set('view engine', 'ejs'); //uses ejs as view engine
 app.set('views', './views'); //tells express to look for ejs files in views folder
@@ -39,11 +39,6 @@ app.use(expressLayouts);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(routes);
-
-//passport stuffs
-// app.use(session({ secret: 'TWITTER-HOTTIE' })); 
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 
 //serve static assets (js, css, images) from the 'public' folder

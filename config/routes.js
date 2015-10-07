@@ -6,6 +6,7 @@ var methodOverride   = require('method-override');
 var usersController  = require('../controllers/users');
 var photosController = require('../controllers/photos');
 
+
 router.route('/')
 	.get(usersController.home);
 
