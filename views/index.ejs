@@ -1,21 +1,8 @@
-<!-- <div id="map-search">
- -->	<!-- <form action="get">
-		<input type="text" name="search" placeholder="search">
-		<button>search</button>
-	</form>
-</div> -->
-<div class="container">
-
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
-
-    </div>
-
-</div>
+<header>
+    <p id="search-link"><a href="/map">Find tweets</a></p>
+    <div id="profile-pic-header"><a href="/profile"><%= user.twitter.profileImage %></div>
+    <div id="username-logged-in"><a href="/profile"><%= user.twitter.username %></a></div>
+</header>
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box" autofocus />
     <div id="googlemap"></div>

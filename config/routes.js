@@ -10,7 +10,13 @@ module.exports = function(app, passport) {
 
     // route for home page
     app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+        res.render('login.ejs'); // load the index.ejs file
+    });
+
+    app.get('/map', function(req, res) {
+        res.render('index.ejs', {
+            user: req.user
+        });
     });
 
     // route for showing the profile page
@@ -23,7 +29,7 @@ module.exports = function(app, passport) {
         // route for logging out
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.redirect('/login');
     });
 
     // =====================================
@@ -35,7 +41,7 @@ module.exports = function(app, passport) {
     // handle the callback after twitter has authenticated the user
     app.get('/auth/twitter/callback',
         passport.authenticate('twitter', {
-            successRedirect : '/profile',
+            successRedirect : '/map',
             failureRedirect : '/fail'
         }));
 
@@ -46,7 +52,10 @@ function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
+        // $('#passport-login-box').hide;
         return next();
+
+    if (req.user) 
 
     // if they aren't redirect them to the home page
     res.redirect('/');

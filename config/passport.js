@@ -30,33 +30,41 @@ module.exports = function(passport) {
       function(token, tokenSecret, profile, done) {
         console.log(profile)
 
-    		User.findOne({ 'twitter.id': profile.id }, function(err, user) {
-    			//if there's an error, stop everything and return error
-    			if (err)
-    				return done(err);
+      	//make code asynchronous
+      	//ensures User.findOne doesn't fire till we get data from Twitter
+      	process.nextTick(function() {
 
-    			//if user found, log 'em in!
-    			if (user) {
-    				return done(null, user); //user found, return the user
-    			} else {
-    				//if there is no user, create 'em!
-    				var newUser = new User();
+      		User.findOne({ 
+      			'twitter.id': profile.id
+      		},
+      		function(err, user) {
+      			//if there's an error, stop everything and return error
+      			if (err)
+      				return done(err);
 
-    				//user data we need
-    				newUser.twitter.id          = profile.id;
-            newUser.twitter.token       = token;
-            newUser.twitter.username    = profile.username;
-            newUser.twitter.displayName = profile.displayName;
+      			//if user found, log 'em in!
+      			if (user) {
+      				return done(null, user); //user found, return the user
+      			} else {
+      				//if there is no user, create 'em!
+      				var newUser = new User();
 
-            //save user to DB
-            newUser.save(function(err, user) {
-            	if (err)
-            		throw err;
-            	console.log(user)
-            	return done(null, user)
-            });
-    			}
-    		});
-    	}));
+              //user data we need
+      				newUser.twitter.id                = profile.id;
+              newUser.twitter.token             = token;
+              newUser.twitter.username          = profile.username;
+              newUser.twitter.displayName       = profile.displayName;
+              newUser.twitter.profileImage      = profile.profile_image_url;
+
+              //save user to DB
+              newUser.save(function(err) {
+              	if (err)
+              		throw err;
+              	return done(null, newUser)
+              });
+      			}
+      		});
+      	});
+      }));
 };
 

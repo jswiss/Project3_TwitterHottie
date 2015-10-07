@@ -1,7 +1,10 @@
-</head>
-<body>
-</head>
-<body>
+
+<header>
+    <p id="search-link"><a href="/map">Find tweets</a></p>
+    <div id="profile-pic-header"><a href="/profile"><%= user.twitter.profileImage %></div>
+    <div id="username-logged-in"><a href="/profile"><%= user.twitter.username %></a></div>
+</header>
+
 <div class="container">
 
     <div class="page-header text-center">
@@ -18,9 +21,7 @@
                 <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
                     <p>
-                        <strong>id</strong>: <%= user.profile_image_url %><br>
-                        <strong>id</strong>: <%= user.twitter.id %><br>
-                        <strong>token</strong>: <%= user.twitter.token %><br>
+                        <div id="profile-pic"><%= user.twitter.profileImage %></div><br>
                         <strong>username</strong>: <%= user.twitter.username %><br>
                         <strong>displayName</strong>: <%= user.twitter.displayName %>
                     </p>
