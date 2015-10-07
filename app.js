@@ -103,12 +103,15 @@ io.on('connect', function(socket) { //when someone connects, do something
     // console.log(tweet)
     console.log(tweet.place.name + ', ' + tweet.place.country)
 
-    socket.emit('tweets', tweet);
+    // socket.emit('tweets', tweet);
 
     var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
 
     geocoder.geocode(geocoderPlaceName, function(err, res) {
       console.log(res);
+      var toSend = {tweet: tweet, coords: res};
+          socket.emit('tweets', toSend);
+
     });
 
     });
