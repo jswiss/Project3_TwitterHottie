@@ -19,15 +19,31 @@ function initAutocomplete() {
   })
 
   socket.on('tweets', function(toSend) {
-    // console.log(toSend);
+    console.log(toSend.tweet.user.name);
     // console.log(toSend.coords[0].latitude)
     // console.log(toSend.coords[0].longitude)
     var tweetLoc = {lat: toSend.coords[0].latitude, lng: toSend.coords[0].longitude}
-    console.log(tweetLoc);
+    // console.log(tweetLoc);
+
+    var contentString = '<div id="content">'+
+      '<p>' + toSend.tweet.user.name + '</p>' +
+      '<img src=' + toSend.tweet.user.profile_image_url + '>' +
+      '</div>';
+
+
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
     var marker = new google.maps.Marker({
-      position: tweetLoc
+      position: tweetLoc,
+      animation: google.maps.Animation.DROP
     });
     marker.setMap(map);
+    marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
   })
 
   // Create the search box and link it to the UI element.
