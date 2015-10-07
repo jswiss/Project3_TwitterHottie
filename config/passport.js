@@ -49,11 +49,14 @@ module.exports = function(passport) {
       				//if there is no user, create 'em!
       				var newUser = new User();
 
-      				//user data we need
-      				newUser.twitter.id          = profile.id;
-              newUser.twitter.token       = token;
-              newUser.twitter.username    = profile.username;
-              newUser.twitter.displayName = profile.displayName;
+      				var image_url = profile._json.profile_image_url.replace('_normal','');
+
+              //user data we need
+      				newUser.twitter.id                = profile.id;
+              newUser.twitter.token             = token;
+              newUser.twitter.username          = profile.username;
+              newUser.twitter.displayName       = profile.displayName;
+              newUser.twitter.profileImage      = profile.profile_image_url;
 
               //save user to DB
               newUser.save(function(err) {

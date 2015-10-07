@@ -42,3 +42,8 @@
 .pac-container {
   font-family: Roboto;
 }
+
+#profile-pic {
+  height: 80px;
+  width: 60px;
+}
