@@ -49,8 +49,6 @@ module.exports = function(passport) {
       				//if there is no user, create 'em!
       				var newUser = new User();
 
-      				var image_url = profile._json.profile_image_url.replace('_normal','');
-
               //user data we need
       				newUser.twitter.id                = profile.id;
               newUser.twitter.token             = token;

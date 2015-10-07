@@ -14,7 +14,9 @@ module.exports = function(app, passport) {
     });
 
     app.get('/map', function(req, res) {
-        res.render('index.ejs');
+        res.render('index.ejs', {
+            user: req.user
+        });
     });
 
     // route for showing the profile page
@@ -27,7 +29,7 @@ module.exports = function(app, passport) {
         // route for logging out
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/map');
+        res.redirect('/login');
     });
 
     // =====================================
