@@ -12,7 +12,7 @@ function initAutocomplete() {
     styles: styledArray
   });
 
-  var socket = io('http://localhost:9000');
+  var socket = io('http://localhost:3000');
 
   socket.on('connect', function() {
       // console.log('map socket is connected');
@@ -341,7 +341,7 @@ function sendToTwitter(latitude, longitude) {
     // console.log(mapLocation)
     // console.log(mapLocationTEST)
 
-    var socket = io.connect('http://localhost:9000');
+    var socket = io.connect('http://localhost:3000');
 
     socket.on('connect', function() {
         // console.log('client has connected');
