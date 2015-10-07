@@ -7,10 +7,28 @@ function initAutocomplete() {
 
 	var map = new google.maps.Map(document.getElementById('googlemap'), {
     center: {lat: 51.5286416, lng: -0.1015987},
-    zoom: 13,
+    zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: styledArray
   });
+
+  var socket = io('http://localhost:9000');
+
+  socket.on('connect', function() {
+      // console.log('map socket is connected');
+  })
+
+  socket.on('tweets', function(toSend) {
+    // console.log(toSend);
+    // console.log(toSend.coords[0].latitude)
+    // console.log(toSend.coords[0].longitude)
+    var tweetLoc = {lat: toSend.coords[0].latitude, lng: toSend.coords[0].longitude}
+    console.log(tweetLoc);
+    var marker = new google.maps.Marker({
+      position: tweetLoc
+    });
+    marker.setMap(map);
+  })
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
@@ -22,14 +40,26 @@ function initAutocomplete() {
     searchBox.setBounds(map.getBounds());
   });
 
-  var markers = [];
+  var markers =[];
+
+  function sendToGoogleMap(tweetLoc) {
+
+    var marker = new google.maps.Marker({
+      position: tweetLoc,
+      map: map //,
+      // title: 'Hello World!'
+    });
+      // Create a marker for each place.
+    // console.log(marker)
+    markers.push(marker);
+  }
 
   // [START region_getplaces]
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
-  	console.log(places)
+  	// console.log(places)
 
     if (places.length == 0) {
       return;
@@ -59,16 +89,6 @@ function initAutocomplete() {
       
       sendToTwitter(lat, lng);
 			
-	
-
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
-
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -302,13 +322,13 @@ function sendToTwitter(latitude, longitude) {
     // var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
 
     var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
-    console.log(mapLocation)
-    console.log(mapLocationTEST)
+    // console.log(mapLocation)
+    // console.log(mapLocationTEST)
 
     var socket = io.connect('http://localhost:9000');
 
     socket.on('connect', function() {
-        console.log('client has connected');
+        // console.log('client has connected');
     });
 
     socket.emit('mapLocation', mapLocation)
@@ -319,18 +339,9 @@ function sendToTwitter(latitude, longitude) {
 // 	$.get("")
 // })
 
-$(document).ready(function() {
-  console.log('twitter.js is connected')
+// $(document).ready(function() {
+  // console.log('map.js is connected')
 
-  var socket = io('http://localhost:9000');
 
-  socket.on('connect', function() {
-      console.log('map socket is connected');
-  })
-
-  socket.on('tweets', function(toSend) {
-    console.log(toSend.coords[0].latitude)
-    console.log(toSend.coords[0].longitude)
-    })
-})
-
+  // sendToGoogleMap(tweetLoc)
+// })
