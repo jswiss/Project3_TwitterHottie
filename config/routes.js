@@ -21,4 +21,11 @@ router.route('/profile')
 router.route('/logout')
 	.get(usersController.logout);
 
+//twitter routes
+router.route('/auth/twitter')
+	.get(usersController.twitAuth);
+
+router.route('/auth/twitter/callback')
+	.get(usersController.twitCallback);
+
 module.exports = router;

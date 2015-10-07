@@ -22,22 +22,33 @@ function profile(req, res) {
 	});
 };
 
-// route middleware to make sure a user is logged in
+//twitter auth
+function twitAuth(){
+	passport.authenticate('twitter');
+};
+
+//twitter auth callback
+
+function twitCallback() {
+	passport.authenticate('twitter', {
+		successRedirect: '/profile',
+		failureRedirect: '/'
+	});
+}
+
 function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/');
 }
 
 
 module.exports = {
-	home:       home,
-	login:      login,
-	profile:    profile,
-	isLoggedIn: isLoggedIn
+	home:         home,
+	login:        login,
+	profile:      profile,
+	isLoggedIn:   isLoggedIn,
+	twitAuth:     twitAuth,
+	twitCallback: twitCallback
 };
 
