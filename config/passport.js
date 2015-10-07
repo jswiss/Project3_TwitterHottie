@@ -22,16 +22,13 @@ module.exports = function(passport) {
 
   // ===============TWITTER ====================
 
-  passport.use(new TwitterStrategy ({
-    	consumerKey     : configAuth.twitterAuth.consumerKey,
-      consumerSecret  : configAuth.twitterAuth.consumerSecret,
-      callbackURL     : configAuth.twitterAuth.callbackURL
-    },
-    function(token, tokenSecret, profile, done) {
-    	console.log('hi')
-    	//make code asynchronous
-    	//ensures User.findOne doesn't fire till we get data from Twitter
-    	process.nextTick(function() {
+    passport.use(new TwitterStrategy ({
+	    	consumerKey     : configAuth.twitterAuth.consumerKey,
+        consumerSecret  : configAuth.twitterAuth.consumerSecret,
+        callbackURL     : configAuth.twitterAuth.callbackURL
+      },
+      function(token, tokenSecret, profile, done) {
+        console.log(profile)
 
     		User.findOne({ 'twitter.id': profile.id }, function(err, user) {
     			//if there's an error, stop everything and return error
