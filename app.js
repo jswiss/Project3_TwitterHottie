@@ -11,26 +11,25 @@ var geocoder       = require('geocoder');
 var io             = require('socket.io')(server);
 var session        = require('express-session');
 var flash          = require('connect-flash');
-var port           = process.env.PORT || 9000;
+var port           = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://localhost/twitterhottie');
 
 var Tag            = require('./models/tag');
 var Photo          = require('./models/photo');
 var User           = require('./models/user');
-var routes         = require('./config/routes')  //(app, passport);
 
 app.set('view engine', 'ejs'); //uses ejs as view engine
 app.set('views', './views'); //tells express to look for ejs files in views folder
 
-// require('./config/passport')(passport); // pass passport for configuration
 
 //passport shiz
-app.use(session({ secret: 'boomshakalaka' })); //session secret
+app.use(session({ secret: 'keyboard cat', key: 'sid', cookie: { secure: false }})); //session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+require('./config/passport')(passport); // pass passport for configuration
 
 //logging middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,12 +37,12 @@ app.use(bodyParser.json());
 app.use(expressLayouts);
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(routes);
-
+// app.use(routes);
 
 //serve static assets (js, css, images) from the 'public' folder
 app.use(express.static(__dirname + '/public'));
 
+require('./config/routes')(app, passport);
 // var josh = new User({
 // 	username: "Josh"
 // });

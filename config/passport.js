@@ -28,6 +28,7 @@ module.exports = function(passport) {
         callbackURL     : configAuth.twitterAuth.callbackURL
       },
       function(token, tokenSecret, profile, done) {
+        console.log(profile)
 
       	//make code asynchronous
       	//ensures User.findOne doesn't fire till we get data from Twitter
