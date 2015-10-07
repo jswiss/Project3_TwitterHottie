@@ -1,7 +1,6 @@
 {
   "name": "twitterhottie",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,9 +18,11 @@
     "express-session": "^1.11.3",
     "geocoder": "^0.2.2",
     "method-override": "^2.3.5",
-    "mongoose": "^4.1.9",
+    "mongoose": "^4.1.10",
     "morgan": "^1.6.1",
     "passport": "^0.3.0",
+    "socket.io": "^1.3.7",
+    "twit": "^2.1.0",
     "passport-twitter": "^1.0.3",
     "socket.io": "^1.3.7"
   }
