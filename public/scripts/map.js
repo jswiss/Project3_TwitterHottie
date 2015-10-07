@@ -23,6 +23,7 @@ function initAutocomplete() {
   });
 
   var markers = [];
+
   // [START region_getplaces]
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
@@ -317,3 +318,19 @@ function sendToTwitter(latitude, longitude) {
 // 	e.preventDefault();
 // 	$.get("")
 // })
+
+$(document).ready(function() {
+  console.log('twitter.js is connected')
+
+  var socket = io('http://localhost:9000');
+
+  socket.on('connect', function() {
+      console.log('map socket is connected');
+  })
+
+  socket.on('tweets', function(toSend) {
+    console.log(toSend.coords[0].latitude)
+    console.log(toSend.coords[0].longitude)
+    })
+})
+

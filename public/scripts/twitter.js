@@ -11,7 +11,7 @@ $(document).ready(function() {
   socket.on('tweets', function(toSend) {
     // console.log(tweet.place.name + ', ' + tweet.place.country);
     console.log(toSend.tweet)
-    console.log(toSend.coords)
+    // console.log(toSend.coords)
 
     // var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
 
