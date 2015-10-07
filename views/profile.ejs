@@ -6,6 +6,7 @@
 
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/" class="btn btn-default btn-sm">Home</a>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -17,6 +18,7 @@
                 <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
                     <p>
+                        <strong>id</strong>: <%= user.twitter.profile_image_url %><br>
                         <strong>id</strong>: <%= user.twitter.id %><br>
                         <strong>token</strong>: <%= user.twitter.token %><br>
                         <strong>username</strong>: <%= user.twitter.username %><br>
