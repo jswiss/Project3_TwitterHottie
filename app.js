@@ -11,8 +11,8 @@ var geocoder       = require('geocoder');
 var io             = require('socket.io')(server);
 var session        = require('express-session');
 var flash          = require('connect-flash');
-var port           = process.env.PORT || 9000;
 
+var port           = process.env.PORT || 3000;
 var http           = require('http')
 var server         = require('http').createServer(app);
 var io             = require('socket.io')(server);
@@ -83,62 +83,44 @@ app.get('/', function(req, res){
 server.listen(port, function() {
 	console.log('server started')
 });
-<<<<<<< HEAD
 
 //web socket stuff
 
-var twitter = new Twit({
-  consumer_key:        process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret:     process.env.TWITTER_CONSUMER_SECRET,
-  access_token:        process.env.TWITTER_ACCESS_TOKEN,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-})
+// var twitter = new Twit({
+//   consumer_key:        process.env.TWITTER_CONSUMER_KEY,
+//   consumer_secret:     process.env.TWITTER_CONSUMER_SECRET,
+//   access_token:        process.env.TWITTER_ACCESS_TOKEN,
+//   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+// })
 
-io.on('connect', function(socket) { //when someone connects, do something
-  console.log('someone has connected!');
-  socket.on('mapLocation', function(mapLocation) {
-    console.log(mapLocation)
-    var stream = twitter.stream('statuses/filter', { locations: mapLocation });
-    console.log(stream)
+// io.on('connect', function(socket) { //when someone connects, do something
+//   console.log('someone has connected!');
+//   socket.on('mapLocation', function(mapLocation) {
+//     console.log(mapLocation)
+//     var stream = twitter.stream('statuses/filter', { locations: mapLocation });
+//     console.log(stream)
 
-    stream.on('tweet', function(tweet) {
-    var data = {};
-    data.name = tweet.user.name;
-    data.screen_name = tweet.user.screen_name;
-    data.text = tweet.text;
-    data.user_profile_image = tweet.user.profile_image_url;
-    // console.log(tweet)
-    console.log(tweet.place.name + ', ' + tweet.place.country)
+//     stream.on('tweet', function(tweet) {
+//     var data = {};
+//     data.name = tweet.user.name;
+//     data.screen_name = tweet.user.screen_name;
+//     data.text = tweet.text;
+//     data.user_profile_image = tweet.user.profile_image_url;
+//     // console.log(tweet)
+//     console.log(tweet.place.name + ', ' + tweet.place.country)
 
-    // socket.emit('tweets', tweet);
+//     // socket.emit('tweets', tweet);
 
-    var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
+//     var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
 
-    geocoder.geocode(geocoderPlaceName, function(err, res) {
-      console.log(res);
-      var toSend = {tweet: tweet, coords: res};
-          socket.emit('tweets', toSend);
+//     geocoder.geocode(geocoderPlaceName, function(err, res) {
+//       console.log(res);
+//       var toSend = {tweet: tweet, coords: res};
+//           socket.emit('tweets', toSend);
 
-    });
+//     });
 
-    });
-  });
-});
+//     });
+//   });
+// });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> jointdev
