@@ -1,3 +1,5 @@
+var passport         = require('passport');
+
 //GET /login
 function login(app, passport, req, res) {
 	res.render('login.ejs', { message: req.flash('loginMessage') });
@@ -24,6 +26,7 @@ function profile(req, res) {
 
 //twitter auth
 function twitAuth(){
+	console.log('twitAuth')
 	passport.authenticate('twitter');
 };
 

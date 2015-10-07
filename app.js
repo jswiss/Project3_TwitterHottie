@@ -18,12 +18,12 @@ mongoose.connect('mongodb://localhost/twitterhottie');
 var Tag            = require('./models/tag');
 var Photo          = require('./models/photo');
 var User           = require('./models/user');
-var routes         = require('./config/routes')  //(app, passport);
+var routes         = require('./config/routes')//(app, passport);
 
 app.set('view engine', 'ejs'); //uses ejs as view engine
 app.set('views', './views'); //tells express to look for ejs files in views folder
 
-// require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
 
 //passport shiz
 app.use(session({ secret: 'boomshakalaka' })); //session secret
@@ -71,20 +71,3 @@ app.use(express.static(__dirname + '/public'));
 app.listen(port, function() {
 	console.log('server started')
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
