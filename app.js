@@ -108,7 +108,7 @@ io.on('connect', function(socket) { //when someone connects, do something
 
       if (tweet.entities.media) {
         geocoder.geocode(geocoderPlaceName, function(err, res) {
-          console.log(res);
+          // console.log(res);
           // console.log("*************************");
           console.log(tweet.entities.media[0].media_url);
           // console.log("*************************");

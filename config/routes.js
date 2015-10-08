@@ -24,8 +24,12 @@ module.exports = function(app, passport) {
 
     // route for showing the profile page
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
+        var photos = Photo.find({ user: req.user._id}, function(err, returnedObject) {
+    
+            res.render('profile.ejs', {
+                user    : req.user, // get the user out of session and pass to template
+                photos   : returnedObject
+            });
         });
     });
 

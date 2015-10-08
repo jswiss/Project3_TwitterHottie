@@ -31,9 +31,9 @@
         <div class="col-sm-9">
             <div class="img-display">
                 <div class="img-card">
-                    insert erb tags for images here
-                    each img should be 280px wide, with margin of 6px on either side
-                    play around with height as necessary
+                    <% for(var i=0; i < photos.length; i++) { %>
+                      <img src="<%= photos[i].url%>">
+                    <% } %>
                 </div>
             </div>
         </div>
