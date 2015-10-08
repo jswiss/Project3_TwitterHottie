@@ -4,6 +4,14 @@
 	height: 50px;
 }
 
+.well {
+  background: url(/images/twitter-hottie-profile-small.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #login-bg {
   background: url(http://www.dannylatendorf.com/Bilder/februar%202015/home/Photo%20Collage.jpg) center center no-repeat fixed;
   -webkit-background-size: cover;
@@ -62,22 +70,23 @@ div.jumbotron.text-center {
 }
 
 #profile-pic {
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px;
 }
 
 header {
   width: 100%;
   height: 60px;
-  background-color: black;
+  background-color: #BDFCDF;
   display: inline-block;
 }
 
 #search-link {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  color: white;
-  margin-right: 1000px;
+  color: #4c3639;
+  margin-right: 850px;
   display: inline-block;
   margin-bottom: 20px;
   vertical-align: center;
@@ -92,26 +101,28 @@ header {
 #username-logged-in {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: #4c3639;
   display: inline-block;
 }
 
 #username-link {
   text-decoration: none;
-  color: white;
+  color: #4c3639;
   margin-top: 30px;
+  font-family: 'Vollkorn', serif;
 }
 
 #map-link {
   text-decoration: none;
-  color: white;
+  color: #4c3639;
   margin-top: 30px;
   margin-left: 10px;
+  font-family: 'Vollkorn', serif;
 }
 
 a #search-link {
   text-decoration: none;
-  color: white;
+  color: #4c3639;
 }
 
 #error {
@@ -120,7 +131,6 @@ a #search-link {
 
 #error-img {
   width: 300px;
-  /*height: 200px;*/
   position: absolute;
   left: 50%;
   top: 50%;
@@ -135,15 +145,53 @@ div.page-header.text-center {
   margin-top: 20px;
 }
 
-.twitter-pic {
-  max-width: 280px;
+.card-block {
+  width: 260px;
+  height: 260px;
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-bottom: 6px;
+  display: inline-block;
+
+}
+
+.card-img {
+  display: inline-block;
+  max-width: 260px;
+  max-height: 230px;
   margin-right: 6px;
   margin-left: 6px;
 }
 
-.img-card {
-  display: inline-block;
-  max-width: 280px;
-  margin-right: 6px;
-  margin-left: 6px;
+#profile-bg {
+  background-color: #fff0f2;
+}
+
+#profile-text {
+  color: #4c3639;
+}
+
+.profile-twit-link {
+  text-decoration: none;
+  font-family: 'Vollkorn', serif;
+  color: #4c3639;
+}
+
+.profile-box-link {
+  text-decoration: none;
+  font-family: 'Vollkorn', serif;
+  color: #4c3639;
+}
+
+.card-title {
+  margin-bottom: 5px;
+  color: #4c3639;
+}
+
+.col-sm-9 {
+  margin-top: 8px;
+}
+
+.col-sm-3 {
+  margin-top: 8px;
 }
