@@ -106,3 +106,7 @@ a #search-link {
 .well {
   width: 250px;
 }
+
+div.page-header.text-center {
+  margin-top: 20px;
+}
