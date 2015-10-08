@@ -1,7 +1,7 @@
 
 <header>
     <p id="search-link"><a href="/map">Find tweets</a></p>
-    <div id="profile-pic-header"><a href="/profile"><%= user.twitter.profileImage %></div>
+    <div id="profile-pic-header"><a href="/profile"><img src="<%= user.twitter.profileImage %>"></div>
     <div id="username-logged-in"><a href="/profile"><%= user.twitter.username %></a></div>
 </header>
 
@@ -21,7 +21,7 @@
                 <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
                     <p>
-                        <div id="profile-pic"><%= user.twitter.profileImage %></div><br>
+                        <div id="profile-pic"><img src="<%= user.twitter.profileImage %>"></div><br>
                         <strong>username</strong>: <%= user.twitter.username %><br>
                         <strong>displayName</strong>: <%= user.twitter.displayName %>
                     </p>
