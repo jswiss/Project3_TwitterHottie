@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
         res.render('login.ejs'); // load the index.ejs file
     });
 
-    app.get('/map', function(req, res) {
+    app.get('/map', isLoggedIn, function(req, res) {
         res.render('index.ejs', {
             user: req.user
         });
@@ -42,7 +42,7 @@ module.exports = function(app, passport) {
     app.get('/auth/twitter/callback',
         passport.authenticate('twitter', {
             successRedirect : '/map',
-            failureRedirect : '/fail'
+            failureRedirect : '/error'
         }));
 
 };

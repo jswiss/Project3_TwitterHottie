@@ -1,14 +1,14 @@
 
 <header>
-    <p id="search-link"><a href="/map">Find tweets</a></p>
+    <p id="search-link"><a id="map-link" href="/map">Find tweets</a></p>
     <div id="profile-pic-header"><a href="/profile"><img src="<%= user.twitter.profileImage %>"></div>
-    <div id="username-logged-in"><a href="/profile"><%= user.twitter.username %></a></div>
+    <div id="username-logged-in"><a id="username-link" href="/profile"><%= user.twitter.username %></a></div>
 </header>
 
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <h1><span class="fa fa-camera"></span> Profile Page</h1>
         <a href="/" class="btn btn-default btn-sm">Home</a>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
@@ -16,7 +16,7 @@
     <div class="row">
 
         <!-- TWITTER INFORMATION -->
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <div class="well">
                 <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
@@ -26,6 +26,15 @@
                         <strong>displayName</strong>: <%= user.twitter.displayName %>
                     </p>
 
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="img-display">
+                <div class="img-card">
+                    insert erb tags for images here
+                    each img should be 280px wide, with margin of 6px on either side
+                    play around with height as necessary
+                </div>
             </div>
         </div>
 
