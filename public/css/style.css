@@ -45,8 +45,8 @@
 }
 
 #profile-pic {
-  height: 80px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
 }
 
 header {
@@ -101,4 +101,8 @@ a #search-link {
   left: 50%;
   top: 50%;
   margin: -100px 0 0 -150px;
+}
+
+.well {
+  width: 250px;
 }

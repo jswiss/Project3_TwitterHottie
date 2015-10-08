@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
         res.render('login.ejs'); // load the index.ejs file
     });
 
-    app.get('/map', is LoggedIn, function(req, res) {
+    app.get('/map', isLoggedIn, function(req, res) {
         res.render('index.ejs', {
             user: req.user
         });
