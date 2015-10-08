@@ -1,8 +1,4 @@
 
-// This example adds a search box to a map, using the Google Place Autocomplete
-// feature. People can enter geographical searches. The search box will return a
-// pick list containing a mix of places and predicted search terms.
-
 function initAutocomplete() {
 
 	var map = new google.maps.Map(document.getElementById('googlemap'), {
@@ -12,6 +8,29 @@ function initAutocomplete() {
     styles: styledArray
   });
 
+  // Event delegation for dynamically added elements (the popup tweet boxes): listen to parent object (#googlemap) for a click event on the selector, where '.test' is the selector, and then call the function
+  $('#googlemap').on('click', '.test', function() {
+    // console.log('testing button');
+    // console.log($(this).prev().prev().text());
+    var data = {screenName: $(this).prev().prev().text()}
+    // console.log(data)
+      $.ajax({
+      // method: 'POST', 
+      // url: /whatever
+      data: data,
+      dataType: 'json'
+      }).done(function(response){
+    console.log(response);
+    })
+
+  //  app.put('/whatever', function(req, res){
+      //findorcreate mongoose
+      // new Photo // check out heathrow
+    // photo.create
+  // })
+
+  })
+
   var socket = io('http://localhost:3000');
 
   socket.on('connect', function() {
@@ -19,22 +38,24 @@ function initAutocomplete() {
   })
 
   socket.on('tweets', function(toSend) {
-    console.log(toSend.tweet.user.name);
+    console.log(toSend.tweet.user.screen_name);
     // console.log(toSend.coords[0].latitude)
     // console.log(toSend.coords[0].longitude)
     var tweetLoc = {lat: toSend.coords[0].latitude, lng: toSend.coords[0].longitude}
     // console.log(tweetLoc);
+    var iconPic = toSend.tweet.user.profile_image_url
 
     var contentString = '<div id="content">'+
     '<img src=' + toSend.tweet.user.profile_image_url + '>' +
+    '<p>' + toSend.tweet.user.screen_name + '</p>' +
     '<p>' + toSend.tweet.user.name + '</p>' +
     '<p>' + toSend.tweet.text + '</p>' +
-    '<button id="test">Test</button>' +
+    '<button class="test">Test</button>' +
     '</div>';
 
-    $("test").on("click", function(
-      console.log("Button clicked")
-    ))
+    // $("#test").on("click", function(){
+    //   console.log("Button clicked")
+    // })
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -46,8 +67,8 @@ function initAutocomplete() {
     });
     marker.setMap(map);
     marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
+      infowindow.open(map, marker);
+    });
   })
 
   // Create the search box and link it to the UI element.
@@ -66,6 +87,7 @@ function initAutocomplete() {
 
     var marker = new google.maps.Marker({
       position: tweetLoc,
+      icon: iconPic,
       map: map //,
       // title: 'Hello World!'
     });
