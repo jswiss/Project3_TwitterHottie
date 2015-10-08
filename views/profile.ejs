@@ -18,12 +18,11 @@
           <!-- TWITTER INFORMATION -->
           <div class="col-sm-3">
             <div class="well">
-              <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
-
-                  <p>
-                    <div id="profile-pic"><img src="<%= user.twitter.profileImage %>"></div><br>
-                    <strong>username</strong>: <%= user.twitter.username %><br>
-                    <strong>displayName</strong>: <%= user.twitter.displayName %>
+                  <p id="profile-text">
+                  <a target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"><img id="profile-pic" src="<%= user.twitter.profileImage %>"></a>
+                    <br>
+                    <strong><a class="profile-twit-link" target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"> @<%= user.twitter.username %> </a></strong>
+                    <br>
                   </p>
 
             </div>
@@ -32,7 +31,7 @@
             <% for(var i=0; i < photos.length; i++) { %>
               <div class="card card-block">
               
-              <div class="card-title"> <a target="_blank" href="http://www.twitter.com/<%= photos[i].screenName %>"> @<%= photos[i].screenName %> </a></div> 
+              <div class="card-title"> <a class="profile-twit-link" target="_blank" href="http://www.twitter.com/<%= photos[i].screenName %>"> @<%= photos[i].screenName %> </a></div> 
               <img class="card-img" src="<%= photos[i].url%>">
 
               </div>

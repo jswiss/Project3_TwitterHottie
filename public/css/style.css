@@ -4,6 +4,14 @@
 	height: 50px;
 }
 
+.well {
+  background: url(http://www.wall-library.com/media/gbu0/prodxl/WINDMILL003.jpg)center center no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #login-bg {
   background: url(http://www.dannylatendorf.com/Bilder/februar%202015/home/Photo%20Collage.jpg) center center no-repeat fixed;
   -webkit-background-size: cover;
@@ -62,8 +70,9 @@ div.jumbotron.text-center {
 }
 
 #profile-pic {
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px;
 }
 
 header {
@@ -120,7 +129,6 @@ a #search-link {
 
 #error-img {
   width: 300px;
-  /*height: 200px;*/
   position: absolute;
   left: 50%;
   top: 50%;
@@ -151,4 +159,21 @@ div.page-header.text-center {
   max-height: 230px;
   margin-right: 6px;
   margin-left: 6px;
+}
+
+#profile-bg {
+  background-color: #fff0f2;
+}
+
+#profile-text {
+  color: #4c3639;
+}
+
+.profile-twit-link {
+  text-decoration: none;
+  color: #4c3639;
+}
+
+.card-title {
+  margin-bottom: 5px;
 }
