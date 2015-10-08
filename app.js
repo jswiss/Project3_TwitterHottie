@@ -89,31 +89,53 @@ var twitter = new Twit({
 io.on('connect', function(socket) { //when someone connects, do something
   console.log('someone has connected!');
   socket.on('mapLocation', function(mapLocation) {
-    console.log(mapLocation)
+    // console.log(mapLocation)
     var stream = twitter.stream('statuses/filter', { locations: mapLocation });
-    console.log(stream)
+    // console.log(stream)
 
     stream.on('tweet', function(tweet) {
-    var data = {};
-    data.name = tweet.user.name;
-    data.screen_name = tweet.user.screen_name;
-    data.text = tweet.text;
-    data.user_profile_image = tweet.user.profile_image_url;
-    // console.log(tweet)
-    console.log(tweet.place.name + ', ' + tweet.place.country)
+      var data = {};
+          // console.log(tweet)
+      data.name = tweet.user.name;
+      data.screen_name = tweet.user.screen_name;
+      data.text = tweet.text;
+      data.user_profile_image = tweet.user.profile_image_url;
+      // console.log(tweet.place.name + ', ' + tweet.place.country)
 
-    // socket.emit('tweets', tweet);
+      var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
 
-    var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
+      // media[0].media_url
 
-    geocoder.geocode(geocoderPlaceName, function(err, res) {
-      console.log(res);
-      var toSend = {tweet: tweet, coords: res};
+      if (tweet.entities.media) {
+        geocoder.geocode(geocoderPlaceName, function(err, res) {
+          console.log(res);
+          // console.log("*************************");
+          console.log(tweet.entities.media[0].media_url);
+          // console.log("*************************");
+          var toSend = {tweet: tweet, coords: res};
           socket.emit('tweets', toSend);
-
-    });
-
+        });
+      }
     });
   });
 });
 
+
+    // var screenNameCapture   = $(this).prev().prev().text()
+    // var newPhoto            = new Photo();
+    // var currentUser         = req.user.id;
+
+    // newPhoto.screenName = screenNameCapture;
+    // newPhoto.user       = currentUser;
+
+    // newPhoto.save(function(err) {
+    //   if (err)
+    //     throw err;
+    //   return done(null, newPhoto)
+    // })
+
+  //  app.put('/whatever', function(req, res){
+      //findorcreate mongoose
+      // new Photo // check out heathrow
+    // photo.create
+  // })

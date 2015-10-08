@@ -5,6 +5,9 @@
 // var methodOverride   = require('method-override');
 // var usersController  = require('../controllers/users');
 // var photosController = require('../controllers/photos');
+var Tag            = require('../models/tag');
+var Photo          = require('../models/photo');
+var User           = require('../models/user');
 
 module.exports = function(app, passport) {
 
@@ -31,6 +34,16 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/login');
     });
+
+    app.post('/photos', function(req, res) {
+        console.log(req.body);
+
+        Photo.create({ screenName: req.body.screenName, url: req.body.url, user: req.user.id }, function(err, photo) {
+            if(err) console.log(err)
+            res.json(req.user)
+        })
+    })
+
 
     // =====================================
     // TWITTER ROUTES ======================

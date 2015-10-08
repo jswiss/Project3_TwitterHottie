@@ -1,4 +1,3 @@
-
 function initAutocomplete() {
 
 	var map = new google.maps.Map(document.getElementById('googlemap'), {
@@ -12,25 +11,22 @@ function initAutocomplete() {
   $('#googlemap').on('click', '.test', function() {
     // console.log('testing button');
     console.log($(this).prev().prev().text());
-    var data = {screenName: $(this).prev().prev().text()}
+    console.log($(this).prev().prev().prev().attr('src'));
+    
+    var data = {
+      screenName:   $(this).prev().prev().text(),
+      url:          $(this).prev().prev().prev().attr('src')
+    }
 
-    var newPhoto = new Photo();
-
-    // console.log(data)
-    //   $.ajax({
-    //   // method: 'POST', 
-    //   // url: /whatever
-    //   data: data,
-    //   dataType: 'json'
-    //   }).done(function(response){
-    // console.log(response);
-    // })
-
-  //  app.put('/whatever', function(req, res){
-      //findorcreate mongoose
-      // new Photo // check out heathrow
-    // photo.create
-  // })
+    console.log(data)
+    $.ajax({
+      method: 'POST', 
+      url: '/photos',
+      data: data,
+      dataType: 'json'
+    }).done(function(response){
+      console.log(response);
+    })
 
   })
 
@@ -49,8 +45,9 @@ function initAutocomplete() {
     var iconPic = toSend.tweet.user.profile_image_url
 
     var contentString = '<div id="content">'+
-    '<img src=' + toSend.tweet.user.profile_image_url + '>' +
+    '<img class="map-profile-pic" src=' + toSend.tweet.user.profile_image_url + '>' +
     '<p>' + toSend.tweet.user.screen_name + '</p>' +
+    '<img class="map-img" src=' + toSend.tweet.entities.media[0].media_url + '>' +
     '<p>' + toSend.tweet.user.name + '</p>' +
     '<p>' + toSend.tweet.text + '</p>' +
     '<button class="test">Test</button>' +
@@ -376,23 +373,23 @@ function sendToTwitter(latitude, longitude) {
 	// console.log(lat1, lon1);
 	// console.log(lat2, lon2);
 
-    var mapOutput = [lon1, lat1, lon2, lat2]
-    
-    var mapLocationTEST = mapOutput.map(String)
-    
-    // var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
+  var mapOutput = [lon1, lat1, lon2, lat2]
+  
+  var mapLocationTEST = mapOutput.map(String)
+  
+  // var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
 
-    var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
-    // console.log(mapLocation)
-    // console.log(mapLocationTEST)
+  var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
+  // console.log(mapLocation)
+  // console.log(mapLocationTEST)
 
-    var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('http://localhost:3000');
 
-    socket.on('connect', function() {
-        // console.log('client has connected');
-    });
+  socket.on('connect', function() {
+      // console.log('client has connected');
+  });
 
-    socket.emit('mapLocation', mapLocation)
+  socket.emit('mapLocation', mapLocation)
 }
 
 sendToTwitter();
