@@ -379,7 +379,7 @@ function sendToTwitter(latitude, longitude) {
   
   // var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
 
-  var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8' ]
+  var mapLocation = [ '-122.75', '36.8', '-121.75', '37.8'  ];
   // console.log(mapLocation)
   // console.log(mapLocationTEST)
 

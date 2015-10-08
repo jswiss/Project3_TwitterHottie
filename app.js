@@ -90,7 +90,7 @@ io.on('connect', function(socket) { //when someone connects, do something
   console.log('someone has connected!');
   socket.on('mapLocation', function(mapLocation) {
     // console.log(mapLocation)
-    var stream = twitter.stream('statuses/filter', { locations: mapLocation });
+    var stream = twitter.stream('statuses/filter', { track: 'and, the, if, or, but, I, lol' });
     // console.log(stream)
 
     stream.on('tweet', function(tweet) {
@@ -100,13 +100,13 @@ io.on('connect', function(socket) { //when someone connects, do something
       data.screen_name = tweet.user.screen_name;
       data.text = tweet.text;
       data.user_profile_image = tweet.user.profile_image_url;
-      // console.log(tweet.place.name + ', ' + tweet.place.country)
 
-      var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country
+      if (tweet.place) {
 
-      // media[0].media_url
+        var geocoderPlaceName = tweet.place.name + ', ' + tweet.place.country;
 
       if (tweet.entities.media) {
+        
         geocoder.geocode(geocoderPlaceName, function(err, res) {
           // console.log(res);
           // console.log("*************************");
@@ -116,6 +116,7 @@ io.on('connect', function(socket) { //when someone connects, do something
           socket.emit('tweets', toSend);
         });
       }
+    }
     });
   });
 });
