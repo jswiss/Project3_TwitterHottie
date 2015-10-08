@@ -4,6 +4,23 @@
 	height: 50px;
 }
 
+#login-bg {
+  background: url(http://www.dannylatendorf.com/Bilder/februar%202015/home/Photo%20Collage.jpg) center center no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#passport-login-box {
+  background: rgb(198, 214, 201);
+  background: rgba(198, 214, 201, 0);
+}
+
+div.jumbotron.text-center {
+  background: rgb(198, 214, 201);
+  background: rgba(198, 214, 201, 0.7);
+}
+
 #googlemap {
 	position: absolute;
 	top: 0;
