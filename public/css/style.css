@@ -85,7 +85,7 @@ header {
 #search-link {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: #4c3639;
   margin-right: 850px;
   display: inline-block;
   margin-bottom: 20px;
@@ -101,13 +101,13 @@ header {
 #username-logged-in {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: #BDFCDF;
   display: inline-block;
 }
 
 #username-link {
   text-decoration: none;
-  color: white;
+  color: #BDFCDF;
   margin-top: 30px;
 }
 
@@ -176,4 +176,12 @@ div.page-header.text-center {
 
 .card-title {
   margin-bottom: 5px;
+}
+
+.col-sm-9 {
+  margin-top: 8px;
+}
+
+.col-sm-3 {
+  margin-top: 8px;
 }
