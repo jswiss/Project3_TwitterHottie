@@ -15,7 +15,7 @@
                   <p id="profile-text">
                   <a target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"><img id="profile-pic" src="<%= user.twitter.profileImage %>"></a>
                     <br>
-                    <strong><a class="profile-twit-link" target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"> @<%= user.twitter.username %> </a></strong>
+                    <strong><a class="profile-box-link" target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"> @<%= user.twitter.username %> </a></strong>
                     <br>
                   </p>
                   <a href="/map" class="btn btn-default btn-sm">Map</a>
@@ -27,7 +27,7 @@
             <% for(var i=0; i < photos.length; i++) { %>
               <div class="card card-block">
               
-              <div class="card-title"> <a class="profile-twit-link" target="_blank" href="http://www.twitter.com/<%= photos[i].screenName %>"> @<%= photos[i].screenName %> </a></div> 
+                <div class="card-title"> <strong><a class="profile-twit-link" target="_blank" href="http://www.twitter.com/<%= photos[i].screenName %>"> @<%= photos[i].screenName %> </a></strong></div> 
               <img class="card-img" src="<%= photos[i].url%>">
 
               </div>

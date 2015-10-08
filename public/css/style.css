@@ -5,7 +5,7 @@
 }
 
 .well {
-  background: url(http://www.wall-library.com/media/gbu0/prodxl/WINDMILL003.jpg)center center no-repeat fixed;
+  background: url(/images/twitter-hottie-profile-small.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -101,26 +101,28 @@ header {
 #username-logged-in {
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  color: #BDFCDF;
+  color: #4c3639;
   display: inline-block;
 }
 
 #username-link {
   text-decoration: none;
-  color: #BDFCDF;
+  color: #4c3639;
   margin-top: 30px;
+  font-family: 'Vollkorn', serif;
 }
 
 #map-link {
   text-decoration: none;
-  color: white;
+  color: #4c3639;
   margin-top: 30px;
   margin-left: 10px;
+  font-family: 'Vollkorn', serif;
 }
 
 a #search-link {
   text-decoration: none;
-  color: white;
+  color: #4c3639;
 }
 
 #error {
@@ -171,11 +173,19 @@ div.page-header.text-center {
 
 .profile-twit-link {
   text-decoration: none;
+  font-family: 'Vollkorn', serif;
+  color: #4c3639;
+}
+
+.profile-box-link {
+  text-decoration: none;
+  font-family: 'Vollkorn', serif;
   color: #4c3639;
 }
 
 .card-title {
   margin-bottom: 5px;
+  color: #4c3639;
 }
 
 .col-sm-9 {
