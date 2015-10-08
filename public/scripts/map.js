@@ -3,7 +3,7 @@ function initAutocomplete() {
 
 	var map = new google.maps.Map(document.getElementById('googlemap'), {
     center: {lat: 51.5286416, lng: -0.1015987},
-    zoom: 10,
+    zoom: 2,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: styledArray
   });
@@ -11,17 +11,20 @@ function initAutocomplete() {
   // Event delegation for dynamically added elements (the popup tweet boxes): listen to parent object (#googlemap) for a click event on the selector, where '.test' is the selector, and then call the function
   $('#googlemap').on('click', '.test', function() {
     // console.log('testing button');
-    // console.log($(this).prev().prev().text());
+    console.log($(this).prev().prev().text());
     var data = {screenName: $(this).prev().prev().text()}
+
+    var newPhoto = new Photo();
+
     // console.log(data)
-      $.ajax({
-      // method: 'POST', 
-      // url: /whatever
-      data: data,
-      dataType: 'json'
-      }).done(function(response){
-    console.log(response);
-    })
+    //   $.ajax({
+    //   // method: 'POST', 
+    //   // url: /whatever
+    //   data: data,
+    //   dataType: 'json'
+    //   }).done(function(response){
+    // console.log(response);
+    // })
 
   //  app.put('/whatever', function(req, res){
       //findorcreate mongoose
