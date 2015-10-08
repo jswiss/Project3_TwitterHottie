@@ -2,7 +2,7 @@ function initAutocomplete() {
 
 	var map = new google.maps.Map(document.getElementById('googlemap'), {
     center: {lat: 51.5286416, lng: -0.1015987},
-    zoom: 2,
+    zoom: 3,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: styledArray
   });
@@ -14,7 +14,7 @@ function initAutocomplete() {
     console.log($(this).prev().prev().prev().attr('src'));
     
     var data = {
-      screenName:   $(this).prev().prev().text(),
+      screenName:   $(this).prev().prev().prev().prev().text(),
       url:          $(this).prev().prev().prev().attr('src')
     }
 
@@ -58,7 +58,8 @@ function initAutocomplete() {
     // })
 
     var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      content: contentString,
+      maxWidth: 200
     });
 
     var marker = new google.maps.Marker({

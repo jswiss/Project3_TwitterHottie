@@ -33,6 +33,7 @@
                 <div class="img-card">
                     <% for(var i=0; i < photos.length; i++) { %>
                       <img src="<%= photos[i].url%>">
+                      <div class="twitter-handle"> <a href="http://www.twitter.com/<%= photos[i].screenName %>"> @<%= photos[i].screenName %> </a></div>
                     <% } %>
                 </div>
             </div>
