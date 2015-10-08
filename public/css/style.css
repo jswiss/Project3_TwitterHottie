@@ -93,3 +93,12 @@ a #search-link {
 #error {
   background-color: #5E98A2;
 }
+
+#error-img {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -100px 0 0 -150px;
+}
