@@ -8,7 +8,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
@@ -20,15 +22,8 @@
     "morgan": "^1.6.1",
     "passport": "^0.3.0",
     "socket.io": "^1.3.7",
-    "twit": "^2.1.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jswiss/Project3_TwitterHottie.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jswiss/Project3_TwitterHottie/issues"
-  },
-  "homepage": "https://github.com/jswiss/Project3_TwitterHottie#readme",
-  "description": ""
+    "twit": "^2.1.0",
+    "passport-twitter": "^1.0.3",
+    "socket.io": "^1.3.7"
+  }
 }

@@ -101,6 +101,7 @@ function initAutocomplete() {
   // more details for that place.
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
+  	console.log(places)
   	// console.log(places)
 
     if (places.length == 0) {
@@ -131,6 +132,20 @@ function initAutocomplete() {
       
       sendToTwitter(lat, lng);
 			
+		  marker = new google.maps.Marker({
+		    map: map,
+		    animation: google.maps.Animation.DROP,
+		    // position: {lat: 59.327, lng: 18.067}
+		  });
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -350,6 +365,7 @@ var styledArray =  [
 ];
 
 function sendToTwitter(latitude, longitude) {
+
 	lat1 = (latitude + 2).toFixed(2);
 	lon1 = (longitude + 2).toFixed(2);
 	lat2 = (latitude - 2).toFixed(2);
@@ -375,6 +391,8 @@ function sendToTwitter(latitude, longitude) {
 
     socket.emit('mapLocation', mapLocation)
 }
+
+sendToTwitter();
 
 // $("pac-input").on('submit', function(e) {
 // 	e.preventDefault();
