@@ -9,7 +9,7 @@
 
     <div class="page-header text-center">
         <h1><span class="fa fa-camera"></span> Profile Page</h1>
-        <a href="/" class="btn btn-default btn-sm">Home</a>
+        <a href="/map" class="btn btn-default btn-sm">Map</a>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -17,25 +17,26 @@
 
         <!-- TWITTER INFORMATION -->
         <div class="col-sm-3">
-            <div class="well">
-                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+          <div class="well">
+            <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
 
-                    <p>
-                        <div id="profile-pic"><img src="<%= user.twitter.profileImage %>"></div><br>
-                        <strong>username</strong>: <%= user.twitter.username %><br>
-                        <strong>displayName</strong>: <%= user.twitter.displayName %>
-                    </p>
+                <p>
+                  <div id="profile-pic"><img src="<%= user.twitter.profileImage %>"></div><br>
+                  <strong>username</strong>: <%= user.twitter.username %><br>
+                  <strong>displayName</strong>: <%= user.twitter.displayName %>
+                </p>
 
-            </div>
+          </div>
         </div>
         <div class="col-sm-9">
-            <div class="img-display">
-                <div class="img-card">
-                    insert erb tags for images here
-                    each img should be 280px wide, with margin of 6px on either side
-                    play around with height as necessary
-                </div>
+          <% for(var i=0; i < photos.length; i++) { %>
+            <div class="card card-block">
+            
+            <div class="card-title"> <a href="http://www.twitter.com/<%= photos[i].screenName %>"> @<%= photos[i].screenName %> </a></div> 
+            <img class="card-img" src="<%= photos[i].url%>">
+
             </div>
+          <% } %>
         </div>
 
     </div>

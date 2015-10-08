@@ -9,7 +9,7 @@ $(document).ready(function() {
   });
 
   socket.on('tweets', function(toSend) {
-    // console.log(toSend.tweet)
+    console.log(toSend.tweet)
     // console.log(tweet.place.name + ', ' + tweet.place.country);
     // console.log(toSend.tweet.id)
     // console.log(toSend.tweet.text)
