@@ -26,11 +26,15 @@ function initAutocomplete() {
     // console.log(tweetLoc);
 
     var contentString = '<div id="content">'+
-      '<p>' + toSend.tweet.user.name + '</p>' +
-      '<img src=' + toSend.tweet.user.profile_image_url + '>' +
-      '</div>';
+    '<img src=' + toSend.tweet.user.profile_image_url + '>' +
+    '<p>' + toSend.tweet.user.name + '</p>' +
+    '<p>' + toSend.tweet.text + '</p>' +
+    '<button id="test">Test</button>' +
+    '</div>';
 
-
+    $("test").on("click", function(
+      console.log("Button clicked")
+    ))
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
