@@ -51,15 +51,16 @@ function initAutocomplete() {
     '<p>' + toSend.tweet.user.name + '</p>' +
     '<p>' + toSend.tweet.text + '</p>' +
     '<button class="test">Test</button>' +
-    '</div>';
-
-    // $("#test").on("click", function(){
-    //   console.log("Button clicked")
-    // })
+    '</div>' +
+    '<style>' +
+      '#content { background: #ffe9ec; }' + 
+      '.map-img { max-width: 150px; max-height: 150px; }' + 
+    '</style>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
-      maxWidth: 200
+      maxWidth: 200,
+      maxHeight: 200
     });
 
     var marker = new google.maps.Marker({
