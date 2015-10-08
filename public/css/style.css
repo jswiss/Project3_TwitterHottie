@@ -89,3 +89,7 @@ a #search-link {
   text-decoration: none;
   color: white;
 }
+
+#error {
+  background-color: #5E98A2;
+}
