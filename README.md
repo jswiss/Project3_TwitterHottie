@@ -27,7 +27,7 @@ The images selected by the user are stored in their profile page. Here the user 
 ![Twitterhottie profile page](./public/images/Profile_Page.png)
 
 ##Future Improvements and Additions
-Twitterhottie will always be a work in project, as it is little more than a display of the now. Currently the user can curate, but not interact. Future iterations will allow the user to edit and delete their collection of images, as well as interact with the Twitter users who have created said content.
+Twitterhottie will always be a work in progress, as it is little more than a display of the now. Currently the user can curate, but not interact. Future iterations will allow the user to edit and delete their collection of images, as well as interact with the Twitter users who have created said content.
 
 Additional improvements in performance and refactoring are needed as well. Mustachejs will be used to clean up some of the JS that contains HTML.
 
