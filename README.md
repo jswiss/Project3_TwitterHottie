@@ -42,21 +42,21 @@ We used a combination of vanilla Javascript and JQuery, and pulled it all togeth
 
 In addition, we used the following modules and frameworks:
 
--Bootstrapjs
--NormalizeCSS
--Express
--Mongoose
--MongoDB
--Morgan
--Body Parser
--Cookie Parser
--Socket.io
--Express Layouts
--Express Session
--Flash
--EJS
--Geocoder
--Twit
+- Bootstrapjs
+- NormalizeCSS
+- Express
+- Mongoose
+- MongoDB
+- Morgan
+- Body Parser
+- Cookie Parser
+- Socket.io
+- Express Layouts
+- Express Session
+- Flash
+- EJS
+- Geocoder
+- Twit
 
 ##CSS and Styling
 As our theme of “curation”, we sought inspiration for our styling from sources such as Dazed&Confused and AnOther to give the profile page the look and feel of an independent culture magazine.  Our palate was pastels, including dusted pinks and aquamarines, so that the focus could be on the images.  On the map page, we added only a minimal amount of styling to the popup markers for this reason – we did not want to distract the user.  However, on the login page, we decided to display more vibrant moving images of facial outlines to give the user a impression of the underlying buzz of Twitter.  This was also done as the movement does not detract from any core content on the login page.
