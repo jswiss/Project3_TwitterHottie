@@ -15,7 +15,7 @@ function initAutocomplete() {
     
     var data = {
       screenName:   $(this).prev().prev().prev().prev().text(),
-      url:          $(this).prev().prev().prev().attr('src')
+      url:          $(this).prev().prev().attr('src')
     }
 
     console.log(data)
@@ -49,7 +49,7 @@ function initAutocomplete() {
     '<p id="username">' + toSend.tweet.user.screen_name + '</p>' +
     '<img class="map-img" src=' + toSend.tweet.entities.media[0].media_url + '>' +
     '<p id="tweet-text"> "' + toSend.tweet.text + '" </p>' +
-    '<button id="test">Appropriate me.</button>' +
+    '<button class="test">Appropriate me.</button>' +
     '</div>' +
     '<style>' +
       '#content { background: #ffe9ec; text-align: center; }' + 
