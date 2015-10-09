@@ -90,7 +90,7 @@ io.on('connect', function(socket) { //when someone connects, do something
   console.log('someone has connected!');
   socket.on('mapLocation', function(mapLocation) {
     // console.log(mapLocation)
-    var stream = twitter.stream('statuses/filter', { track: 'and, the, if, or, but, I, lol' });
+    var stream = twitter.stream('statuses/filter', { track: 'and, the, if, or, but, I, lol, omg, sexy, hot, selfie, bieber, kardashian, et, la, le, les, si, ou, mais, moi, y, si, pero, yo' });
     // console.log(stream)
 
     stream.on('tweet', function(tweet) {
