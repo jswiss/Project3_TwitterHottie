@@ -1,8 +1,8 @@
 <body id="profile-bg">
   <header>
-      <p id="search-link"><a id="map-link" href="/map">Find tweets</a></p>
-      <div id="profile-pic-header"><a href="/profile"><img src="<%= user.twitter.profileImage %>"></div>
-      <div id="username-logged-in"><a id="username-link" href="/profile"><%= user.twitter.username %></a></div>
+      <p id="search-link"><a id="map-link" href="/map">A micro-appropriation of others.</a></p>
+          <div id="profile-pic-header"><a href="/profile"><img src="<%= user.twitter.profileImage %>"></div>
+    <!-- <div id="username-logged-in"><a id="username-link" href="/profile"><%= user.twitter.username %></a></div> -->
   </header>
 
   <div class="container">
@@ -13,10 +13,10 @@
           <div class="col-sm-3">
             <div class="well">
                   <p id="profile-text">
-                  <a target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"><img id="profile-pic" src="<%= user.twitter.profileImage %>"></a>
-                    <br>
-                    <strong><a class="profile-box-link" target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"> @<%= user.twitter.username %> </a></strong>
-                    <br>
+                  <a target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"><img id="profile-pic" src="<%= user.twitter.profileImage %>"><span><strong><a class="profile-box-link" target="_blank" href="http://www.twitter.com/<%= user.twitter.username %>"> @<%= user.twitter.username %> </a></strong></span></a>
+                    <!-- br> -->
+                
+                   <!--  <br> -->
                   </p>
                   <a href="/map" class="btn btn-default btn-sm">Map</a>
                   <a href="/logout" class="btn btn-default btn-sm">Logout</a>

@@ -45,16 +45,20 @@ function initAutocomplete() {
     var iconPic = toSend.tweet.user.profile_image_url
 
     var contentString = '<div id="content">'+
-    '<img class="map-profile-pic" src=' + toSend.tweet.user.profile_image_url + '>' +
-    '<p>' + toSend.tweet.user.screen_name + '</p>' +
+    '<p id="user-full-name">' + toSend.tweet.user.name + '</p>' +
+    '<p id="username">' + toSend.tweet.user.screen_name + '</p>' +
     '<img class="map-img" src=' + toSend.tweet.entities.media[0].media_url + '>' +
-    '<p>' + toSend.tweet.user.name + '</p>' +
-    '<p>' + toSend.tweet.text + '</p>' +
-    '<button class="test">Test</button>' +
+    '<p id="tweet-text"> "' + toSend.tweet.text + '" </p>' +
+    '<button id="test">Appropriate me.</button>' +
     '</div>' +
     '<style>' +
-      '#content { background: #ffe9ec; }' + 
-      '.map-img { max-width: 150px; max-height: 150px; }' + 
+      '#content { background: #ffe9ec; text-align: center; }' + 
+      '.map-img { max-width: 150px; max-height: 150px; display: block; margin: 0 auto; }' + 
+      '#content { color: #666666; }' +
+      '#content { text-align: center; }' +
+      '#tweet-text { font-style: italic; font-family: "Courier New", Courier, monospace; }' +
+      '#username { font-family: "Courier New", Courier, monospace; }' +
+      '#user-full-name { font-weight: bold; text-decoration: underline; font-family: "Lucida Console", Monaco, monospace; }' +
     '</style>';
 
     var infowindow = new google.maps.InfoWindow({

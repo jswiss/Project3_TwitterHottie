@@ -5,19 +5,22 @@
 }
 
 .well {
-  background: url(/images/twitter-hottie-profile-small.png);
+  background: url(/images/disclosure.gif);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  /*background-size: 220px 180px;*/
 }
 
 #login-bg {
-  background: url(http://www.dannylatendorf.com/Bilder/februar%202015/home/Photo%20Collage.jpg) center center no-repeat fixed;
+  background: url(/images/disclosure.gif) center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-size: 250px;
+  background-repeat: repeat;
 }
 #passport-login-box {
   background: rgb(198, 214, 201);
@@ -27,6 +30,16 @@
 div.jumbotron.text-center {
   background: rgb(198, 214, 201);
   background: rgba(198, 214, 201, 0.7);
+  top: 50%;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+}
+
+.subtitle {
+  text-decoration: underline;
+  font-family: 'Jacques Francois Shadow', cursive;
 }
 
 #googlemap {
@@ -113,7 +126,7 @@ header {
 }
 
 #map-link {
-  text-decoration: none;
+  text-decoration: overline;
   color: #4c3639;
   margin-top: 30px;
   margin-left: 10px;
@@ -139,6 +152,7 @@ a #search-link {
 
 .well {
   width: 250px;
+  height: 250px;
 }
 
 div.page-header.text-center {
@@ -152,7 +166,9 @@ div.page-header.text-center {
   margin-left: 6px;
   margin-bottom: 6px;
   display: inline-block;
-
+  border: 2px;
+  border-width: 2px;
+  border-color: red;
 }
 
 .card-img {
@@ -171,8 +187,12 @@ div.page-header.text-center {
   color: #4c3639;
 }
 
+.btn {
+  font-family: 'Oswald', sans-serif;
+}
+
 .profile-twit-link {
-  text-decoration: none;
+  text-decoration: underline;
   font-family: 'Vollkorn', serif;
   color: #4c3639;
 }
@@ -181,6 +201,7 @@ div.page-header.text-center {
   text-decoration: none;
   font-family: 'Vollkorn', serif;
   color: #4c3639;
+  background: white;
 }
 
 .card-title {
