@@ -14,7 +14,7 @@ the observer. In this era of performative identity creation, we posit that such 
 role reversal will empower our users to transform their own identities through
 the systematic micro-appropriation of the other. 
 
-Run locally with the terminal command `npm start`
+Run locally with the terminal command `npm start`. Then access the site at [http://127.0.0.1:3000] (http://127.0.0.1:3000)
 
 The user's journey through Twitterhottie begins by logging in through their Twitter account.
 
