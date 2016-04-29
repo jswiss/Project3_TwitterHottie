@@ -74,7 +74,7 @@ require('./config/routes')(app, passport);
 // });
 
 server.listen(port, function() {
-	console.log('server started')
+	console.log('server started on port ' + port);
 });
 
 //web socket stuff
