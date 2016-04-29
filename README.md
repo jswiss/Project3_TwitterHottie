@@ -14,6 +14,8 @@ the observer. In this era of performative identity creation, we posit that such 
 role reversal will empower our users to transform their own identities through
 the systematic micro-appropriation of the other. 
 
+Run locally with the terminal command `npm start`
+
 The user's journey through Twitterhottie begins by logging in through their Twitter account.
 
 ![Twitterhottie login](./public/images/Login.png)
